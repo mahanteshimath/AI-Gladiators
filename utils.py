@@ -30,7 +30,7 @@ if 'DATABRICKS_SERVING_ENDPOINT_NAME' not in st.session_state:
 # Function to call Databricks Llama 3 model
 def call_llama_3(prompt):
     headers = {
-        "Authorization": f"Bearer {DATABRICKS_API_TOKEN}",
+        "Authorization": f"Bearer {st.session_state.DATABRICKS_TOKEN}",
         "Content-Type": "application/json"
     }
     data = {
@@ -38,7 +38,7 @@ def call_llama_3(prompt):
                 {"role": "user", "content": prompt}
             ]
     }
-    response = requests.post(DATABRICKS_MODEL_ENDPOINT,
+    response = requests.post(st.session_state.DATABRICKS_SERVING_ENDPOINT,
         headers=headers,
         json=data,
         verify=False
