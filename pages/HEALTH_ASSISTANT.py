@@ -73,6 +73,11 @@ st.markdown("""
         padding: 0 1rem;
         color: #fff;
     }
+    .chat-container {
+        max-height: 70vh;
+        overflow-y: auto;
+        padding-right: 1rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -92,12 +97,15 @@ st.title("Interactive Health Assistant Chatbot")
 st.write("This chatbot assists you with basic health-related questions. Please note that it is not a substitute for professional medical advice.")
 
 # Display chat messages
-for message in st.session_state.messages:
-    with st.container():
+chat_container = st.container()
+with chat_container:
+    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
+    for message in st.session_state.messages:
         if message["role"] == "user":
             st.markdown(f'<div class="chat-message user"><div class="message">{message["content"]}</div><div class="avatar-icon">👤</div></div>', unsafe_allow_html=True)
         else:
             st.markdown(f'<div class="chat-message bot"><div class="avatar-icon">🤖</div><div class="message">{message["content"]}</div></div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Initial greeting
 if len(st.session_state.messages) == 0:
