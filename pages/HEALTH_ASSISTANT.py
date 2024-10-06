@@ -139,4 +139,4 @@ if user_input and user_input != st.session_state.user_input:
     st.session_state.conversation_context += f"Assistant: {assistant_response}\n"
     
     # Rerun to update the chat display
-    st.experimental_rerun()
+    st.rerun()
