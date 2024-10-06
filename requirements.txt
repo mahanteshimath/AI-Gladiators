@@ -1,0 +1,8 @@
+streamlit
+streamlit-chat
+pandas
+Pillow
+plotly
+requests
+transformers
+python-dotenv
