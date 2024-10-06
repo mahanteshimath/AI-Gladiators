@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 # Load environment variables
 # load_dotenv()
 
-
 db_credentials = st.secrets["db_credentials"]
+
 
 if 'DATABRICKS_HOST' not in st.session_state:
     st.session_state.DATABRICKS_HOST = db_credentials["DATABRICKS_HOST"]
@@ -22,15 +22,15 @@ if 'DATABRICKS_SERVING_ENDPOINT_NAME' not in st.session_state:
 
 
 # # Databricks API configuration
-# DATABRICKS_API_TOKEN = os.getenv("DATABRICKS_TOKEN")
-# DATABRICKS_MODEL_ENDPOINT = os.getenv("DATABRICKS_SERVING_ENDPOINT")
+DATABRICKS_API_TOKEN = st.session_state.DATABRICKS_TOKEN
+DATABRICKS_MODEL_ENDPOINT = st.session_state.DATABRICKS_SERVING_ENDPOINT
 
 
 
 # Function to call Databricks Llama 3 model
 def call_llama_3(prompt):
     headers = {
-        "Authorization": f"Bearer {st.session_state.DATABRICKS_TOKEN}",
+        "Authorization": f"Bearer {DATABRICKS_API_TOKEN}",
         "Content-Type": "application/json"
     }
     data = {
@@ -38,7 +38,7 @@ def call_llama_3(prompt):
                 {"role": "user", "content": prompt}
             ]
     }
-    response = requests.post(st.session_state.DATABRICKS_SERVING_ENDPOINT,
+    response = requests.post(DATABRICKS_MODEL_ENDPOINT,
         headers=headers,
         json=data,
         verify=False
