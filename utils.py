@@ -4,12 +4,27 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 
-# Databricks API configuration
-DATABRICKS_API_TOKEN = os.getenv("DATABRICKS_TOKEN")
-DATABRICKS_MODEL_ENDPOINT = os.getenv("DATABRICKS_SERVING_ENDPOINT")
+db_credentials = st.secrets["db_credentials"]
+
+if 'DATABRICKS_HOST' not in st.session_state:
+    st.session_state.DATABRICKS_HOST = db_credentials["DATABRICKS_HOST"]
+if 'DATABRICKS_HTTP_PATH' not in st.session_state:
+    st.session_state.DATABRICKS_HTTP_PATH = db_credentials["DATABRICKS_HTTP_PATH"]
+if 'DATABRICKS_TOKEN' not in st.session_state:
+    st.session_state.DATABRICKS_TOKEN = db_credentials["DATABRICKS_TOKEN"]
+if 'DATABRICKS_SERVING_ENDPOINT' not in st.session_state:
+    st.session_state.DATABRICKS_SERVING_ENDPOINT = db_credentials["DATABRICKS_SERVING_ENDPOINT"]
+if 'DATABRICKS_SERVING_ENDPOINT_NAME' not in st.session_state:
+    st.session_state.DATABRICKS_SERVING_ENDPOINT_NAME = db_credentials["DATABRICKS_SERVING_ENDPOINT_NAME"]
+
+
+# # Databricks API configuration
+# DATABRICKS_API_TOKEN = os.getenv("DATABRICKS_TOKEN")
+# DATABRICKS_MODEL_ENDPOINT = os.getenv("DATABRICKS_SERVING_ENDPOINT")
+
 
 
 # Function to call Databricks Llama 3 model
