@@ -24,7 +24,8 @@ if 'DATABRICKS_SERVING_ENDPOINT_NAME' not in st.session_state:
 # # Databricks API configuration
 DATABRICKS_API_TOKEN = st.session_state.DATABRICKS_TOKEN
 DATABRICKS_MODEL_ENDPOINT = st.session_state.DATABRICKS_SERVING_ENDPOINT
-
+DATABRICKS_SERVER_HOSTNAME = st.session_state.DATABRICKS_HOST
+DATABRICKS_HTTP_PATH = st.session_state.DATABRICKS_HTTP_PATH
 
 
 # Function to call Databricks Llama 3 model
@@ -54,3 +55,11 @@ def call_llama_3(prompt):
 def local_css(file_name):
     with open(file_name, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+def get_databricks_connection():
+    return sql.connect(
+        server_hostname=DATABRICKS_SERVER_HOSTNAME,
+        http_path=DATABRICKS_HTTP_PATH,
+        access_token=DATABRICKS_API_TOKEN
+    )  
