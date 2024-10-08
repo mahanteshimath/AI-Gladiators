@@ -29,25 +29,29 @@ DATABRICKS_HTTP_PATH = st.session_state.DATABRICKS_HTTP_PATH
 
 
 # Function to call Databricks Llama 3 model
-def call_llama_3(prompt):
+def call_llama_3(prompt, max_tokens=100):
     headers = {
         "Authorization": f"Bearer {DATABRICKS_API_TOKEN}",
         "Content-Type": "application/json"
     }
     data = {
         "messages": [
-                {"role": "user", "content": prompt}
-            ]
+            {"role": "user", "content": prompt}
+        ],
+        "max_tokens": max_tokens
     }
-    response = requests.post(DATABRICKS_MODEL_ENDPOINT,
-        headers=headers,
-        json=data,
-        verify=False
-    )
-    if response.status_code == 200:
+    
+    try:
+        response = requests.post(
+            DATABRICKS_MODEL_ENDPOINT,
+            headers=headers,
+            json=data,
+            verify=False
+        )
+        response.raise_for_status()
         return response.json().get("choices", [{}])[0].get("message", {}).get("content", "No response content.")
-    else:
-        st.error(f"Error calling Databricks API: {response.text}")
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error calling Databricks API: {e}")
         return None
     
 
