@@ -118,4 +118,3 @@ else:
 # Footer
 st.markdown("---")
 st.markdown("Remember: Always consult with your healthcare provider before making any changes to your medication regimen.")
-        st.info(response)
