@@ -2,7 +2,7 @@ import requests
 import streamlit as st
 import os
 from dotenv import load_dotenv
-
+from databricks import sql
 # Load environment variables
 # load_dotenv()
 
