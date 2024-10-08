@@ -6,12 +6,10 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "conversation_context" not in st.session_state:
     st.session_state.conversation_context = ""
-if "user_input" not in st.session_state:
-    st.session_state.user_input = ""
 
 # Function to generate response
 def generate_response(prompt):
-    response = call_llama_3(prompt)
+    response = call_llama_3(prompt,500)
     return response
 
 # Streamlit app layout
@@ -20,37 +18,58 @@ st.set_page_config(page_title="Health Assistant Chatbot", page_icon="🩺", layo
 # Custom CSS for dark theme styling and improved chat layout
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
     .stApp {
         background-color: #1E1E1E;
         color: #FFFFFF;
     }
     .main {
-        padding-bottom: 80px;  /* Space for fixed input box */
+        padding-bottom: 80px;
     }
     .fixed-input {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: #1E1E1E;
+        background-color: #2B2B2B;
         padding: 20px;
         z-index: 1000;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
     }
     .stTextInput > div > div > input {
-        background-color: #2B2B2B;
+        background-color: #3A3A3A;
         color: #FFFFFF;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
     }
     .stButton > button {
         background-color: #4CAF50;
         color: white;
         font-weight: bold;
+        border-radius: 20px;
+        border: none;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+    }
+    .stButton > button:hover {
+        background-color: #45a049;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .chat-message {
         padding: 1.5rem;
-        border-radius: 0.5rem;
+        border-radius: 20px;
         margin-bottom: 1rem;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    .chat-message:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .chat-message.user {
         background-color: #2B2B2B;
@@ -65,47 +84,39 @@ st.markdown("""
         margin-left: 1rem;
         max-width: 80%;
     }
-    .chat-message .avatar-icon {
-        font-size: 2rem;
-        margin: 0 1rem;
+    .chat-message .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 10px;
     }
     .chat-message .message {
         padding: 0 1rem;
         color: #fff;
     }
-    .chat-container {
-        max-height: 70vh;
-        overflow-y: auto;
-        padding-right: 1rem;
+    .sidebar .sidebar-content {
+        background-color: #2B2B2B;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # Sidebar for app controls
 with st.sidebar:
+   # st.image("https://your-logo-url.com/logo.png", width=100)  # Replace with your logo URL
     st.title("🩺 Health Assistant")
     st.markdown("---")
     if st.button("Clear Conversation", key="clear"):
         st.session_state.messages = []
         st.session_state.conversation_context = ""
-        st.session_state.user_input = ""
     st.markdown("---")
-    st.markdown("Created with ❤️ by Your Name")
+    st.markdown("Created with ❤️ by AI-Gladiators")
 
 # Main chat interface
 st.title("Interactive Health Assistant Chatbot")
 st.write("This chatbot assists you with basic health-related questions. Please note that it is not a substitute for professional medical advice.")
 
-# Display chat messages
-chat_container = st.container()
-with chat_container:
-    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-    for message in st.session_state.messages:
-        if message["role"] == "user":
-            st.markdown(f'<div class="chat-message user"><div class="message">{message["content"]}</div><div class="avatar-icon">👤</div></div>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="chat-message bot"><div class="avatar-icon">🤖</div><div class="message">{message["content"]}</div></div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+
 
 # Initial greeting
 if len(st.session_state.messages) == 0:
@@ -113,11 +124,42 @@ if len(st.session_state.messages) == 0:
     st.session_state.messages.append({"role": "assistant", "content": initial_message})
     st.session_state.conversation_context += f"Assistant: {initial_message}\n"
 
-# Create a placeholder for the fixed input box
-fixed_input_placeholder = st.empty()
-
 # Main content
 st.markdown('<div class="main">', unsafe_allow_html=True)
+
+# Display chat messages
+for message in st.session_state.messages:
+    with st.container():
+        if message["role"] == "user":
+            st.markdown(f'<div class="chat-message user"><div class="message">{message["content"]}</div><img src="https://cdn1.iconfinder.com/data/icons/avatar-2-2/512/Salesman_1-512.png" class="avatar" alt="User"></div>', unsafe_allow_html=True)
+        else:
+            st.markdown(f'<div class="chat-message bot"><img src="https://cdn0.iconfinder.com/data/icons/robot-avatar/512/Robot_Avatars_13-1024.png" class="avatar" alt="Bot"><div class="message">{message["content"]}</div></div>', unsafe_allow_html=True)
+
+
+#create a form for input
+with st.form(key="chat_form", clear_on_submit=True):
+    st.markdown('<div class="fixed-input">', unsafe_allow_html=True)
+    user_input = st.text_input("Type your message here...", key="user_input")
+    submit_button = st.form_submit_button("Send")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Handle user input and generate response
+if submit_button and user_input:
+    # Add user message to history
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    st.session_state.conversation_context += f"User: {user_input}\n"
+    
+    # Generate and display assistant response
+    with st.spinner("Thinking..."):
+        assistant_response = generate_response(st.session_state.conversation_context)
+    
+    # Add assistant response to history
+    st.session_state.messages.append({"role": "assistant", "content": assistant_response})
+    st.session_state.conversation_context += f"Assistant: {assistant_response}\n"
+    
+    # Force a rerun to update the chat display
+    st.rerun()
+
 
 # Disclaimer
 st.markdown("""
@@ -126,25 +168,3 @@ st.markdown("""
 """)
 
 st.markdown('</div>', unsafe_allow_html=True)
-
-# Fixed input box at the bottom
-with fixed_input_placeholder.container():
-    st.markdown('<div class="fixed-input">', unsafe_allow_html=True)
-    user_input = st.text_input("Type your message here...", key="user_input_widget")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# Check if user has entered a new message
-if user_input and user_input != st.session_state.user_input:
-    st.session_state.user_input = user_input
-    # Add user message to history
-    st.session_state.messages.append({"role": "user", "content": user_input})
-    st.session_state.conversation_context += f"User: {user_input}\n"
-    
-    # Generate and display assistant response
-    with st.spinner("Thinking..."):
-        assistant_response = generate_response(st.session_state.conversation_context)
-    st.session_state.messages.append({"role": "assistant", "content": assistant_response})
-    st.session_state.conversation_context += f"Assistant: {assistant_response}\n"
-    
-    # Rerun to update the chat display
-    st.rerun()
