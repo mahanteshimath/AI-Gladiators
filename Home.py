@@ -35,7 +35,7 @@ st.markdown("## Explore Our Features")
 features = [
     {
         "icon": "🤖",
-        "title": "AI Health Assitant",
+        "title": "AI Health Assistant",
         "description": "Get instant answers to your health queries and receive guidance from our AI."
     },
     {
