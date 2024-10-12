@@ -25,7 +25,7 @@ else:
 if st.button("Check Symptoms"):
     if all_symptoms:
         prompt = f"Given the following symptoms: {', '.join(all_symptoms)}, provide a brief, friendly explanation of possible conditions and general advice. Remember to suggest consulting a healthcare professional."
-        response = call_llama_3(prompt)
+        response = call_llama_3(prompt,max_tokens=2000)
         if response:
             st.write(response)
     else:
