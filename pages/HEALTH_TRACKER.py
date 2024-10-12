@@ -45,7 +45,7 @@ if not st.session_state.health_data.empty:
 
     # Llama-generated insights
     prompt = f"Given the following health data: {st.session_state.health_data.to_string()}, provide a brief, friendly analysis of the trends and general health advice."
-    response = call_llama_3(prompt)
+    response = call_llama_3(prompt,max_tokens=2000)
     if response:
         st.subheader("AI-Generated Insights")
         st.info(response)
