@@ -71,7 +71,8 @@ The project consists of the following files and directories:
 │   ├── Health_Tracker.py
 │   ├── Medication_Reminder.py
 │   ├── Symptom_Checker.py
-│   └── Home.py
+└── Home.py│
+|── README.md│   
 ├── requirements.txt            # Required Python packages
 ├── style.css                   # CSS for styling the app
 └── utils.py                    # Utility functions used in the app
