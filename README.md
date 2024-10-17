@@ -1,5 +1,5 @@
 # AI-Gladiators
-This is for HEALY AI app
+This is for HEALY AI app https://healy-ai.streamlit.app/
 
 # Healy AI - Your Health Companion
 
@@ -26,8 +26,8 @@ To get started with Healy AI, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/healy-ai.git
-   cd healy-ai
+   git clone https://github.com/mahanteshimath/AI-Gladiators.git
+   cd AI-Gladiators
    ```
 
 2. **Set Up the Environment:**
