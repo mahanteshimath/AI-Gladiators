@@ -1,7 +1,6 @@
 # AI-Gladiators
 This is for HEALY AI app
 
-```markdown
 # Healy AI - Your Health Companion
 
 Welcome to **Healy AI**, your personal health monitoring application designed to help you track, improve, and maintain your well-being. With features ranging from symptom checking to diet planning, Healy AI is your all-in-one solution for a healthier lifestyle.
@@ -92,7 +91,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 Thank you for checking out Healy AI! Together, let's embark on a journey to better health and well-being.
-```
 
 ### Instructions for Customization
 
