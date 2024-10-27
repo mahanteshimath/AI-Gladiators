@@ -8,9 +8,14 @@ from utils import call_llama_3
 icons = {"assistant": "🤖", "user": "human"}
 
 st.title("Food Inspector")
-st.subheader("Adjust model parameters")
-temperature = st.slider('Temperature', min_value=0.01, max_value=5.0, value=0.3, step=0.01)
-top_p = st.slider('Top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
+
+st.subheader("Adjust Model Parameters")
+col1, col2 = st.columns(2)
+with col1:
+    temperature = st.slider('Temperature', min_value=0.01, max_value=5.0, value=0.3, step=0.01)
+with col2:
+    top_p = st.slider('Top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
+
 st.markdown("**Food Inspector**: Your AI Food Inspector for safe and informed eating, analyzing food packaging contents for hazardous and banned ingredients.")
 
 # Initialize message storage
