@@ -75,7 +75,7 @@ if uploaded_file:
         st.write(prompt)
 
 # Chat input and response generation
-if prompt := st.chat_input(disabled=not replicate_api, placeholder="Type your food package contents"):
+if prompt := st.chat_input(placeholder="Type your food package contents"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar="human"):
         st.write(prompt)
