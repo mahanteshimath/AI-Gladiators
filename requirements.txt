@@ -9,3 +9,6 @@ python-dotenv
 sendgrid
 streamlit_autorefresh
 databricks-sql-connector
+pymupdf
+pytesseract
+pdfplumber
