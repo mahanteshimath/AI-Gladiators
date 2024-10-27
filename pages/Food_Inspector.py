@@ -7,8 +7,7 @@ from utils import call_llama_3
 
 icons = {"assistant": "🤖", "user": "human"}
 
-# App title
-st.ttile("Food Inspector")
+st.title("Food Inspector")
 st.subheader("Adjust model parameters")
 temperature = st.slider('Temperature', min_value=0.01, max_value=5.0, value=0.3, step=0.01)
 top_p = st.slider('Top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
