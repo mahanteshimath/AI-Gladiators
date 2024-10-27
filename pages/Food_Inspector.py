@@ -8,24 +8,11 @@ from utils import call_llama_3
 icons = {"assistant": "🤖", "user": "human"}
 
 # App title
-st.set_page_config(page_title="arctic-food-pharmacist")
-
-# Sidebar for API credentials and parameters
-with st.sidebar:
-    replicate_api = st.secrets.get('REPLICATE_API_TOKEN', None) or st.text_input('Enter Replicate API token:', type='password')
-    if not (replicate_api.startswith('r8_') and len(replicate_api) == 40):
-        st.warning('Please enter a valid Replicate API token.', icon='⚠️')
-        st.markdown("**Don't have an API token?** Head over to [Replicate](https://replicate.com) to sign up for one.")
-    os.environ['REPLICATE_API_TOKEN'] = replicate_api
-
-    st.subheader("Adjust model parameters")
-    temperature = st.slider('Temperature', min_value=0.01, max_value=5.0, value=0.3, step=0.01)
-    top_p = st.slider('Top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-
-    # Social links
-    st.markdown("[![LinkedIn](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/mahantesh-hiremath/) Connect with me.")   
-    st.markdown('<p style="color: yellow;">👉🎥 Visit my YouTube channel for more details <a href="https://bit.ly/atozaboutdata">🎥click</a></p>', unsafe_allow_html=True)
-    st.markdown("**Arctic Food Pharmacist**: Your AI Food Inspector for safe and informed eating, analyzing food packaging contents for hazardous and banned ingredients.")
+st.ttile("Food Inspector")
+st.subheader("Adjust model parameters")
+temperature = st.slider('Temperature', min_value=0.01, max_value=5.0, value=0.3, step=0.01)
+top_p = st.slider('Top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
+st.markdown("**Food Inspector**: Your AI Food Inspector for safe and informed eating, analyzing food packaging contents for hazardous and banned ingredients.")
 
 # Initialize message storage
 if "messages" not in st.session_state:
