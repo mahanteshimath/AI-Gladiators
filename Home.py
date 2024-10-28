@@ -57,6 +57,11 @@ features = [
         "icon": "🩺",
         "title": "Symptom Checker",
         "description": "Understand possible causes of your symptoms and get guidance on when to seek professional care."
+    },
+    {
+        "icon": "🕵️‍♂️",
+        "title": "Food Inspector",
+        "description": "Help you understand food package ingredients and identify any hazardous or banned contents"
     }
 ]
 
