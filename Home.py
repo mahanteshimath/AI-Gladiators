@@ -81,5 +81,5 @@ for feature in features:
     )
 
 st.markdown("---")
-st.markdown("### Start Your Health Journey with Healy Today!")
+st.markdown("### Start Your Health Journey with Healy AI Today!")
 st.write("Select a feature from the sidebar to begin exploring Healy's capabilities.")
