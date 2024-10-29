@@ -19,17 +19,17 @@ with col2:
 st.markdown("**Food Inspector**: Your AI Food Inspector for safe and informed eating, analyzing food packaging contents for hazardous and banned ingredients.")
 
 # Initialize message storage
-if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "Hi, I'm your food inspector AI! I'll help you understand food package ingredients and identify any hazardous or banned contents. Ask me anything."}]
+if "messages_f" not in st.session_state:
+    st.session_state.messages_f = [{"role": "assistant", "content": "Hi, I'm your food inspector AI! I'll help you understand food package ingredients and identify any hazardous or banned contents. Ask me anything."}]
 
 # Display chat messages
-for message in st.session_state.messages:
+for message in st.session_state.messages_f:
     with st.chat_message(message["role"], avatar=icons[message["role"]]):
         st.write(message["content"])
 
 # Clear chat history function
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "Hi, I'm your food inspector AI! I'll help you understand food package ingredients and identify any hazardous or banned contents. Ask me anything."}]
+    st.session_state.messages_f = [{"role": "assistant", "content": "Hi, I'm your food inspector AI! I'll help you understand food package ingredients and identify any hazardous or banned contents. Ask me anything."}]
 
 SYSTEM_PROMPT = """
 You're a food inspector. Understand all ingredients used in packaged food.
@@ -54,7 +54,7 @@ def extract_text_from_image(file):
 # Function for generating response with call_llama_3
 def generate_response():
     prompt = [SYSTEM_PROMPT]
-    for dict_message in st.session_state.messages:
+    for dict_message in st.session_state.messages_f:
         if dict_message["role"] == "user":
             prompt.append("user\n" + dict_message["content"])
         else:
@@ -75,21 +75,21 @@ if uploaded_file:
     elif uploaded_file.type in ["image/png", "image/jpeg", "image/jpg"]:
         prompt = extract_text_from_image(uploaded_file)
     
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages_f.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar="human"):
         st.write(prompt)
 
 # Chat input and response generation
 if prompt := st.chat_input(placeholder="Type your food package contents"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages_f.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar="human"):
         st.write(prompt)
 
 # Generate a new response if the last message is from the user
-if st.session_state.messages[-1]["role"] != "assistant":
+if st.session_state.messages_f[-1]["role"] != "assistant":
     with st.chat_message("assistant", avatar="🤖"):
         response = generate_response()
         st.write(response)
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages_f.append({"role": "assistant", "content": response})
 
 st.button('Clear', on_click=clear_chat_history)
