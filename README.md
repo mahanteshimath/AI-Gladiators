@@ -64,19 +64,25 @@ The project consists of the following files and directories:
 
 ```
 .
-├── .devcontainer               # Configuration for development container
-├── .streamlit                  # Streamlit configuration
-├── pages                       # Different feature pages of the app
-│   ├── Diet_Planner.py
-│   ├── Health_Assistant.py
-│   ├── Health_Tracker.py
-│   ├── Medication_Reminder.py
-│   ├── Symptom_Checker.py
-└── Home.py│
-|── README.md│   
-├── requirements.txt            # Required Python packages
-├── style.css                   # CSS for styling the app
-└── utils.py                    # Utility functions used in the app
+main/
+├── .devcontainer/
+├── .streamlit/
+├── images/
+├── pages/
+│   ├── 1_🤖_Health_Assistant.py
+│   ├── 2_📊_Health_Tracker.py
+│   ├── 3_💊_Medication_Reminder.py
+│   ├── 4_🍎_Diet_Planner.py
+│   ├── 5_🩺_Symptom_Checker.py
+│   └── 6_🧑‍🍳_Food_Inspector.py
+├── samples/
+├── Home.py
+├── README.md
+├── packages.txt
+├── requirements.txt
+├── style.css
+└── utils.py
+
 ```
 
 ## Contributing
