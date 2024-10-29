@@ -124,7 +124,7 @@ def clear_data():
     except Exception as e:
         st.error(f"Error clearing data: {str(e)}")
 
-st.title("🏥 Health Metrics Tracker")
+st.title("Health Metrics Tracker")
 
 # Create two columns for input form and recent stats
 col1, col2 = st.columns([3, 2])
