@@ -12,3 +12,4 @@ databricks-sql-connector
 pymupdf
 pytesseract
 pdfplumber
+xlsxwriter
