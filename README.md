@@ -100,9 +100,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Thank you for checking out Healy AI! Together, let's embark on a journey to better health and well-being.
 
-### Instructions for Customization
-
-- **Repository Link**: Be sure to replace `https://github.com/yourusername/healy-ai.git` with the actual URL of your GitHub repository.
-- **License**: If you choose to use a specific license, ensure you add the relevant license information at the bottom. You can create a `LICENSE` file in your repository as well.
 
 Feel free to modify any sections as per your project's specific details or needs! If you have any further requests or changes, let me know!
