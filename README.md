@@ -20,6 +20,7 @@ Healy AI offers the following features to support your health journey:
 - 💊 **Medication Reminder**: Never miss a dose with our timely medication reminder system, ensuring you stay on track.
 - 🍎 **Diet Planner**: Plan and track your meals for optimal nutrition and a balanced diet that suits your lifestyle.
 - 🩺 **Symptom Checker**: Understand possible causes of your symptoms and get guidance on when to seek professional care.
+- 🕵️‍♂️ **Food Inspector**: Help you understand food package ingredients and identify any hazardous or banned contents.
 
 ## Installation
 To get started with Healy AI, follow these steps:
