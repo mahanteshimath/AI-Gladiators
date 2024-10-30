@@ -25,7 +25,7 @@ Healy AI offers the following features to support your health journey:
 ## Demo
 
 
-[![Watch the Demo](https://i.sstatic.net/Vp2cE.png)](https://www.youtube.com/embed/rr4d_6AUSM8)
+[![Watch the Demo](https://github.com/mahanteshimath/AI-Gladiators/blob/main/images/Designer.jpeg)](https://www.youtube.com/embed/rr4d_6AUSM8)
 
 
 ## Installation
