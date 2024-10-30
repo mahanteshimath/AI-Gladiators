@@ -64,25 +64,32 @@ The project consists of the following files and directories:
 
 ```
 .
-main/
-├── .devcontainer/
-├── .streamlit/
-├── images/
-├── pages/
-│   ├── 1_🤖_Health_Assistant.py
-│   ├── 2_📊_Health_Tracker.py
-│   ├── 3_💊_Medication_Reminder.py
-│   ├── 4_🍎_Diet_Planner.py
-│   ├── 5_🩺_Symptom_Checker.py
-│   └── 6_🧑‍🍳_Food_Inspector.py
-├── samples/
+├── .devcontainer
+    └── devcontainer.json
+├── .streamlit
+    └── config.toml
 ├── Home.py
 ├── README.md
+├── images
+    ├── Designer (1).jpeg
+    ├── Designer.jpeg
+    └── mm.txt
 ├── packages.txt
+├── pages
+    ├── 1_🤖_Health_Assistant.py
+    ├── 2_📊_Health_Tracker.py
+    ├── 3_💊_Medication_Reminder.py
+    ├── 4_🍎_Diet_Planner.py
+    ├── 5_🩺_Symptom_Checker.py
+    └── 6_🕵️‍♂️_Food_Inspector.py
 ├── requirements.txt
+├── samples
+    ├── FoodContent.jpg
+    ├── FoodContent.pdf
+    ├── FoodContent.txt
+    └── product-label-sun-chips.jpg
 ├── style.css
 └── utils.py
-
 ```
 
 ## Contributing
