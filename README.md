@@ -101,4 +101,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Thank you for checking out Healy AI! Together, let's embark on a journey to better health and well-being.
 
 
-Feel free to modify any sections as per your project's specific details or needs! If you have any further requests or changes, let me know!!
+Feel free to modify any sections as per your project's specific details or needs! If you have any further requests or changes, let me know!!!
