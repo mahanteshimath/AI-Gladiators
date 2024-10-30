@@ -24,7 +24,9 @@ Healy AI offers the following features to support your health journey:
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rr4d_6AUSM8?si=HmQqJloibQ0i4Ii7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[![Watch the Demo](https://i.sstatic.net/Vp2cE.png)](https://www.youtube.com/embed/rr4d_6AUSM8)
+
 
 ## Installation
 To get started with Healy AI, follow these steps:
