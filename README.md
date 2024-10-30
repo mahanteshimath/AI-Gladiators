@@ -71,9 +71,7 @@ The project consists of the following files and directories:
 ├── Home.py
 ├── README.md
 ├── images
-    ├── Designer (1).jpeg
-    ├── Designer.jpeg
-    └── mm.txt
+    └── Designer.jpeg
 ├── packages.txt
 ├── pages
     ├── 1_🤖_Health_Assistant.py
@@ -87,6 +85,7 @@ The project consists of the following files and directories:
     ├── FoodContent.jpg
     ├── FoodContent.pdf
     ├── FoodContent.txt
+    ├── Maggi.jpg
     └── product-label-sun-chips.jpg
 ├── style.css
 └── utils.py
