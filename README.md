@@ -22,7 +22,7 @@ Healy AI offers the following features to support your health journey:
 - 🩺 **Symptom Checker**: Understand possible causes of your symptoms and get guidance on when to seek professional care.
 - 🕵️‍♂️ **Food Inspector**: Help you understand food package ingredients and identify any hazardous or banned contents.
 
-## Demo
+## Demo (Click to watch)
 
 
 [![Watch the Demo](https://github.com/mahanteshimath/AI-Gladiators/blob/main/images/Designer.jpeg)](https://www.youtube.com/embed/rr4d_6AUSM8)
